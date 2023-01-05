@@ -1,20 +1,21 @@
 import React from "react";
+import UserReducer from "../reducers/UserReducer";
 
-export const UserContext = React.createContext(null);
-export const UserDispatchContext = React.createContext(null);
+export const StateContext = React.createContext(null);
+export const DispatchContext = React.createContext(null);
+
+const initialState = {
+    firstname: "",
+    lastname: ""
+}
 
 export const UserContextProvider = ({children}) => {
-    const [firstname, setFirstname] = React.useState("");
-    const [lastname, setLastname] = React.useState("");
-
-    const onSetFirstname = (e) => setFirstname(e.target.value);
-    const onSetLastname = (e) => setLastname(e.target.value);
-
+    const [state, dispatch] = React.useReducer(UserReducer, initialState);
     return (
-        <UserContext.Provider value={{ firstname, lastname }}>
-            <UserDispatchContext.Provider value={{ onSetLastname, onSetFirstname }}>
+        <StateContext.Provider value={state}>
+            <DispatchContext.Provider value={dispatch}>
                 {children}
-            </UserDispatchContext.Provider>
-        </UserContext.Provider>
+            </DispatchContext.Provider>
+        </StateContext.Provider>
     )
 }

@@ -1,8 +1,8 @@
 import React from "react";
-import {UserContext} from "../../context/User";
+import {StateContext} from "../../context/User";
 
 function ChildC() {
-    const {firstname, lastname} = React.useContext(UserContext);
+    const {firstname, lastname} = React.useContext(StateContext);
     return (
         <>
             This is ChildC component.

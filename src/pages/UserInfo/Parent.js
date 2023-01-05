@@ -1,15 +1,16 @@
 import React from "react";
 
 import ChildA from "./ChildA";
-import {UserContextProvider, UserDispatchContext} from "../../context/User";
+import {UserContextProvider, DispatchContext} from "../../context/User";
+import {onSetFirstname, onSetLastname} from "../../reducers/UserReducer";
 
 const Form = () => {
-    const {onSetFirstname, onSetLastname} = React.useContext(UserDispatchContext);
+    const dispatch = React.useContext(DispatchContext);
 
     return (
         <form>
-            <input placeholder="first name" onChange={onSetFirstname} />
-            <input placeholder="last name" onChange={onSetLastname} />
+            <input placeholder="first name" onChange={(e) => dispatch(onSetFirstname(e))} />
+            <input placeholder="last name" onChange={(e) => dispatch(onSetLastname(e))} />
         </form>
     )
 }

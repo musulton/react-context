@@ -2,7 +2,7 @@ import React from "react";
 import CounterOutput from "./components/CounterOutput";
 import CounterControl from "./components/CounterControl";
 
-import {CounterContext, CounterProvider} from "../../context/Counter";
+import {CounterContext} from "../../context/Counter";
 
 const CounterControlContext = () => {
     return (
@@ -19,10 +19,10 @@ const CounterControlContext = () => {
 
 const CounterDisplay = () => {
     return (
-        <CounterProvider>
+        <>
             <CounterOutput />
             <CounterControlContext />
-        </CounterProvider>
+        </>
     )
 }
 

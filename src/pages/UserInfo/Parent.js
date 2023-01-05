@@ -1,7 +1,7 @@
 import React from "react";
 
 import ChildA from "./ChildA";
-import {UserContextProvider, DispatchContext} from "../../context/User";
+import {DispatchContext} from "../../context/User";
 import {onSetFirstname, onSetLastname} from "../../reducers/UserReducer";
 
 const Form = () => {
@@ -17,13 +17,13 @@ const Form = () => {
 
 function Parent() {
     return (
-        <UserContextProvider>
+        <>
             <div>This is a Parent component</div>
             <br />
             <Form />
             <br />
             <ChildA />
-        </UserContextProvider>
+        </>
     );
 }
 

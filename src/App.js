@@ -6,7 +6,7 @@ import Parent from "./pages/UserInfo/Parent";
 function App() {
   return (
     <div className="App">
-      <CounterDisplay />
+      {/*<CounterDisplay />*/}
         <Parent />
     </div>
   );

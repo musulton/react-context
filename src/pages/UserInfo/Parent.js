@@ -1,31 +1,28 @@
 import React from "react";
 
 import ChildA from "./ChildA";
+import {UserContextProvider, UserDispatchContext} from "../../context/User";
 
-function Parent() {
-    const [firstname, setFirstname] = React.useState("");
-    const [lastname, setLastname] = React.useState("");
-    const onSetFirstName = (e) => {
-        setFirstname(e.target.value)
-    }
-
-    const onSetLastName = (e) => {
-        setLastname(e.target.value)
-    }
+const Form = () => {
+    const {onSetFirstname, onSetLastname} = React.useContext(UserDispatchContext);
 
     return (
-        <>
+        <form>
+            <input placeholder="first name" onChange={onSetFirstname} />
+            <input placeholder="last name" onChange={onSetLastname} />
+        </form>
+    )
+}
+
+function Parent() {
+    return (
+        <UserContextProvider>
             <div>This is a Parent component</div>
             <br />
-
-            <form>
-                <input placeholder="first name" onChange={onSetFirstName} />
-                <input placeholder="last name" onChange={onSetLastName} />
-            </form>
-
+            <Form />
             <br />
-            <ChildA firstname={firstname} lastname={lastname} />
-        </>
+            <ChildA />
+        </UserContextProvider>
     );
 }
 

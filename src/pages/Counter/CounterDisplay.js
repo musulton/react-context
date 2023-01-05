@@ -2,18 +2,25 @@ import React from "react";
 import CounterOutput from "./components/CounterOutput";
 import CounterControl from "./components/CounterControl";
 
-const CounterDisplay = () => {
-    const [counter, setCounter] = React.useState(0);
+import {CounterContext, CounterProvider} from "../../context/Counter";
 
-    const increment = () => setCounter(counter + 1);
-    const decrement = () => setCounter(counter - 1);
+const CounterControlContext = () => {
+    const {increment, decrement} = React.useContext(CounterContext);
 
     return (
         <>
-            <CounterOutput value={counter} />
             <CounterControl label="Increment" onClick={increment} />
             <CounterControl label="Decrement" onClick={decrement} />
         </>
+    )
+}
+
+const CounterDisplay = () => {
+    return (
+        <CounterProvider>
+            <CounterOutput />
+            <CounterControlContext />
+        </CounterProvider>
     )
 }
 

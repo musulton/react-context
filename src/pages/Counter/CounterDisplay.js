@@ -5,13 +5,15 @@ import CounterControl from "./components/CounterControl";
 import {CounterContext, CounterProvider} from "../../context/Counter";
 
 const CounterControlContext = () => {
-    const {increment, decrement} = React.useContext(CounterContext);
-
     return (
-        <>
-            <CounterControl label="Increment" onClick={increment} />
-            <CounterControl label="Decrement" onClick={decrement} />
-        </>
+        <CounterContext.Consumer>
+            {(value) => (
+                <>
+                    <CounterControl label="Increment" onClick={value.increment} />
+                    <CounterControl label="Decrement" onClick={value.decrement} />
+                </>
+            )}
+        </CounterContext.Consumer>
     )
 }
 
